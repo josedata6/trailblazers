@@ -160,3 +160,56 @@ for i, row in actual_df.iterrows():
 recommendations_df = pd.DataFrame(recommendations)
 print("\n=== Price Adjustment Recommendations ===\n")
 print(recommendations_df.to_string(index=False))
+
+####################################################################################################
+################### Should the Trail Blazers Change Promotions?
+
+import pandas as pd
+
+# Load the data
+df = pd.read_csv("Portland_Trail_Blazers.csv")
+
+# Extract the promo utility scores
+promo_cols = [
+    'Priority Playoff Tickets', 
+    'Hot Dog and Soda', 
+    'Trail Blazers Apparel', 
+    '$20 Gift Certificiate', 
+    'No Promotion'
+]
+promo_utils = df[promo_cols].iloc[0]
+
+# Convert to DataFrame
+promo_df = pd.DataFrame(promo_utils).reset_index()
+promo_df.columns = ['Promotion Item', 'Utility']
+promo_df = promo_df.sort_values(by='Utility', ascending=False)
+
+# Calculate incremental utility compared to "No Promotion"
+no_promo_utility = promo_utils['No Promotion']
+promo_df['Incremental Utility'] = promo_df['Utility'] - no_promo_utility
+
+# Recommend items with positive incremental utility
+promo_df['Recommendation'] = promo_df['Incremental Utility'].apply(
+    lambda x: 'Include (Free or Paid)' if x > 0 else 'Not Recommended'
+)
+
+# Display results
+print("\n=== Promotional Item Utility Analysis ===\n")
+print(promo_df.to_string(index=False))
+
+####################################################################################################
+############# heat map
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Prepare data for heatmap: we'll use a simple format where each row is a promo item and its incremental utility
+heatmap_data = promo_df.set_index('Promotion Item')[['Incremental Utility']]
+
+# Plot the heatmap
+plt.figure(figsize=(8, 5))
+sns.heatmap(heatmap_data, annot=True, cmap='YlGnBu', linewidths=0.5, fmt=".3f", cbar_kws={'label': 'Incremental Utility'})
+plt.title('Heatmap of Promotional Item Value (vs No Promotion)')
+plt.xlabel('Promotion Value')
+plt.ylabel('')
+plt.tight_layout()
+plt.show()
