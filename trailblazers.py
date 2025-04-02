@@ -61,11 +61,17 @@ importance_df.sort_values(by='Importance %', ascending=False, inplace=True)
 
 # Plot the importance bar chart
 plt.figure(figsize=(10, 6))
-plt.bar(importance_df.index, importance_df['Importance %'], color='orange')
+bars = plt.bar(importance_df.index, importance_df['Importance %'], color='orange')
 plt.title('Attribute Importance in Ticket Package Attractiveness')
 plt.ylabel('Importance (%)')
 plt.xlabel('Attribute')
 plt.xticks(rotation=45)
+
+# Add percentage labels on top of bars
+for bar in bars:
+    height = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2., height + 1, f'{height:.1f}%', ha='center', va='bottom')
+
 plt.tight_layout()
 plt.show()
 

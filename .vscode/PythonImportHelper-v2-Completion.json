@@ -1,0 +1,362 @@
+[
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "seaborn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "seaborn",
+        "description": "seaborn",
+        "detail": "seaborn",
+        "documentation": {}
+    },
+    {
+        "label": "file_path",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "file_path = \"Portland_Trail_Blazers.csv\"\ndf = pd.read_csv(file_path)\n# Display the first few rows (optional)\nprint(df.head())\n# Define the attribute groups\nattributes = {\n    \"Game Package\": ['3-game', '6-game', '10-game'],\n    \"Price\": ['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game'],\n    \"Seat Location\": ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt'],\n    \"Promotion\": ['Priority Playoff Tickets', 'Hot Dog and Soda', 'Trail Blazers Apparel', '$20 Gift Certificiate', 'No Promotion']",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "df = pd.read_csv(file_path)\n# Display the first few rows (optional)\nprint(df.head())\n# Define the attribute groups\nattributes = {\n    \"Game Package\": ['3-game', '6-game', '10-game'],\n    \"Price\": ['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game'],\n    \"Seat Location\": ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt'],\n    \"Promotion\": ['Priority Playoff Tickets', 'Hot Dog and Soda', 'Trail Blazers Apparel', '$20 Gift Certificiate', 'No Promotion']\n}",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "attributes",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "attributes = {\n    \"Game Package\": ['3-game', '6-game', '10-game'],\n    \"Price\": ['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game'],\n    \"Seat Location\": ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt'],\n    \"Promotion\": ['Priority Playoff Tickets', 'Hot Dog and Soda', 'Trail Blazers Apparel', '$20 Gift Certificiate', 'No Promotion']\n}\n# Calculate the range for each attribute group\nattribute_ranges = {}\nfor attr, cols in attributes.items():\n    values = df[cols].iloc[0]",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "attribute_ranges",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "attribute_ranges = {}\nfor attr, cols in attributes.items():\n    values = df[cols].iloc[0]\n    attribute_ranges[attr] = values.max() - values.min()\n# Convert to DataFrame and calculate importance percentages\nimportance_df = pd.DataFrame.from_dict(attribute_ranges, orient='index', columns=['Utility Range'])\nimportance_df['Importance %'] = 100 * importance_df['Utility Range'] / importance_df['Utility Range'].sum()\nimportance_df.sort_values(by='Importance %', ascending=False, inplace=True)\n# Show the result\nprint(\"\\nAttribute Importance:\\n\")",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "importance_df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "importance_df = pd.DataFrame.from_dict(attribute_ranges, orient='index', columns=['Utility Range'])\nimportance_df['Importance %'] = 100 * importance_df['Utility Range'] / importance_df['Utility Range'].sum()\nimportance_df.sort_values(by='Importance %', ascending=False, inplace=True)\n# Show the result\nprint(\"\\nAttribute Importance:\\n\")\nprint(importance_df)\n####################################################################################################\n#################### bar chart showing the importance of each attribute ############################\nimport pandas as pd\nimport matplotlib.pyplot as plt",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "file_path",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "file_path = \"Portland_Trail_Blazers.csv\"\ndf = pd.read_csv(file_path)\n# Define the attribute groups\nattributes = {\n    \"Game Package\": ['3-game', '6-game', '10-game'],\n    \"Price\": ['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game'],\n    \"Seat Location\": ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt'],\n    \"Promotion\": ['Priority Playoff Tickets', 'Hot Dog and Soda', 'Trail Blazers Apparel', '$20 Gift Certificiate', 'No Promotion']\n}\n# Calculate the range (max - min utility) for each attribute",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "df = pd.read_csv(file_path)\n# Define the attribute groups\nattributes = {\n    \"Game Package\": ['3-game', '6-game', '10-game'],\n    \"Price\": ['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game'],\n    \"Seat Location\": ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt'],\n    \"Promotion\": ['Priority Playoff Tickets', 'Hot Dog and Soda', 'Trail Blazers Apparel', '$20 Gift Certificiate', 'No Promotion']\n}\n# Calculate the range (max - min utility) for each attribute\nattribute_ranges = {}",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "attributes",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "attributes = {\n    \"Game Package\": ['3-game', '6-game', '10-game'],\n    \"Price\": ['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game'],\n    \"Seat Location\": ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt'],\n    \"Promotion\": ['Priority Playoff Tickets', 'Hot Dog and Soda', 'Trail Blazers Apparel', '$20 Gift Certificiate', 'No Promotion']\n}\n# Calculate the range (max - min utility) for each attribute\nattribute_ranges = {}\nfor attr, cols in attributes.items():\n    values = df[cols].iloc[0]",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "attribute_ranges",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "attribute_ranges = {}\nfor attr, cols in attributes.items():\n    values = df[cols].iloc[0]\n    attribute_ranges[attr] = values.max() - values.min()\n# Create a DataFrame to show relative importance\nimportance_df = pd.DataFrame.from_dict(attribute_ranges, orient='index', columns=['Utility Range'])\nimportance_df['Importance %'] = 100 * importance_df['Utility Range'] / importance_df['Utility Range'].sum()\nimportance_df.sort_values(by='Importance %', ascending=False, inplace=True)\n# Plot the importance bar chart\nplt.figure(figsize=(10, 6))",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "importance_df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "importance_df = pd.DataFrame.from_dict(attribute_ranges, orient='index', columns=['Utility Range'])\nimportance_df['Importance %'] = 100 * importance_df['Utility Range'] / importance_df['Utility Range'].sum()\nimportance_df.sort_values(by='Importance %', ascending=False, inplace=True)\n# Plot the importance bar chart\nplt.figure(figsize=(10, 6))\nbars = plt.bar(importance_df.index, importance_df['Importance %'], color='orange')\nplt.title('Attribute Importance in Ticket Package Attractiveness')\nplt.ylabel('Importance (%)')\nplt.xlabel('Attribute')\nplt.xticks(rotation=45)",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "bars",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "bars = plt.bar(importance_df.index, importance_df['Importance %'], color='orange')\nplt.title('Attribute Importance in Ticket Package Attractiveness')\nplt.ylabel('Importance (%)')\nplt.xlabel('Attribute')\nplt.xticks(rotation=45)\n# Add percentage labels on top of bars\nfor bar in bars:\n    height = bar.get_height()\n    plt.text(bar.get_x() + bar.get_width()/2., height + 1, f'{height:.1f}%', ha='center', va='bottom')\nplt.tight_layout()",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "price_cols",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "price_cols = ['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game']\nlocation_cols = ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt']\nprice_utils = df[price_cols].iloc[0]\nlocation_utils = df[location_cols].iloc[0]\nrecommendations = []\nfor location in location_cols:\n    for price in price_cols:\n        total_utility = location_utils[location] + price_utils[price]\n        recommendations.append({\n            'Seat Location': location,",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "location_cols",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "location_cols = ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt']\nprice_utils = df[price_cols].iloc[0]\nlocation_utils = df[location_cols].iloc[0]\nrecommendations = []\nfor location in location_cols:\n    for price in price_cols:\n        total_utility = location_utils[location] + price_utils[price]\n        recommendations.append({\n            'Seat Location': location,\n            'Price': price,",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "price_utils",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "price_utils = df[price_cols].iloc[0]\nlocation_utils = df[location_cols].iloc[0]\nrecommendations = []\nfor location in location_cols:\n    for price in price_cols:\n        total_utility = location_utils[location] + price_utils[price]\n        recommendations.append({\n            'Seat Location': location,\n            'Price': price,\n            'Total Utility': total_utility",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "location_utils",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "location_utils = df[location_cols].iloc[0]\nrecommendations = []\nfor location in location_cols:\n    for price in price_cols:\n        total_utility = location_utils[location] + price_utils[price]\n        recommendations.append({\n            'Seat Location': location,\n            'Price': price,\n            'Total Utility': total_utility\n        })",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "recommendations",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "recommendations = []\nfor location in location_cols:\n    for price in price_cols:\n        total_utility = location_utils[location] + price_utils[price]\n        recommendations.append({\n            'Seat Location': location,\n            'Price': price,\n            'Total Utility': total_utility\n        })\n# Create a DataFrame sorted by utility (descending)",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "recommendations_df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "recommendations_df = pd.DataFrame(recommendations).sort_values(by='Total Utility', ascending=False)\n# Display recommendation table\nprint(\"\\nPrice Recommendations (Ranked by Total Utility):\\n\")\nprint(recommendations_df.to_string(index=False))\n####################################################################################################\n################### Should the Trail Blazers Raise/Lower Prices?\nimport pandas as pd\n# Load the conjoint data\ndf = pd.read_csv(\"Portland_Trail_Blazers.csv\")\n# Define utilities",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "df = pd.read_csv(\"Portland_Trail_Blazers.csv\")\n# Define utilities\nprice_utils = df[['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game']].iloc[0]\nlocation_utils = df[['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt']].iloc[0]\n# Define actual combos from the question\nactual_combos = [\n    {'Seat Location': '300 Behind the Baskets', 'Price': '$15 Per Seat Per Game'},\n    {'Seat Location': '300 Corner', 'Price': '$25 Per Seat Per Game'},\n    {'Seat Location': '300 Midcourt', 'Price': '$35 Per Seat Per Game'},\n    {'Seat Location': '200 Midcourt', 'Price': '$60 Per Seat Per Game'},",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "price_utils",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "price_utils = df[['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game']].iloc[0]\nlocation_utils = df[['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt']].iloc[0]\n# Define actual combos from the question\nactual_combos = [\n    {'Seat Location': '300 Behind the Baskets', 'Price': '$15 Per Seat Per Game'},\n    {'Seat Location': '300 Corner', 'Price': '$25 Per Seat Per Game'},\n    {'Seat Location': '300 Midcourt', 'Price': '$35 Per Seat Per Game'},\n    {'Seat Location': '200 Midcourt', 'Price': '$60 Per Seat Per Game'},\n]\n# Calculate total utility for given combos",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "location_utils",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "location_utils = df[['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt']].iloc[0]\n# Define actual combos from the question\nactual_combos = [\n    {'Seat Location': '300 Behind the Baskets', 'Price': '$15 Per Seat Per Game'},\n    {'Seat Location': '300 Corner', 'Price': '$25 Per Seat Per Game'},\n    {'Seat Location': '300 Midcourt', 'Price': '$35 Per Seat Per Game'},\n    {'Seat Location': '200 Midcourt', 'Price': '$60 Per Seat Per Game'},\n]\n# Calculate total utility for given combos\nfor combo in actual_combos:",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "actual_combos",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "actual_combos = [\n    {'Seat Location': '300 Behind the Baskets', 'Price': '$15 Per Seat Per Game'},\n    {'Seat Location': '300 Corner', 'Price': '$25 Per Seat Per Game'},\n    {'Seat Location': '300 Midcourt', 'Price': '$35 Per Seat Per Game'},\n    {'Seat Location': '200 Midcourt', 'Price': '$60 Per Seat Per Game'},\n]\n# Calculate total utility for given combos\nfor combo in actual_combos:\n    loc = combo['Seat Location']\n    price = combo['Price']",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "all_prices",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "all_prices = ['$15 Per Seat Per Game', '$25 Per Seat Per Game', '$35 Per Seat Per Game', '$60 Per Seat Per Game']\nall_locations = ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt']\nall_combos = []\nfor loc in all_locations:\n    for price in all_prices:\n        total_utility = location_utils[loc] + price_utils[price]\n        all_combos.append({\n            'Seat Location': loc,\n            'Price': price,\n            'Total Utility': total_utility",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "all_locations",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "all_locations = ['300 Behind the Baskets', '300 Corner', '300 Midcourt', '200 Midcourt']\nall_combos = []\nfor loc in all_locations:\n    for price in all_prices:\n        total_utility = location_utils[loc] + price_utils[price]\n        all_combos.append({\n            'Seat Location': loc,\n            'Price': price,\n            'Total Utility': total_utility\n        })",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "all_combos",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "all_combos = []\nfor loc in all_locations:\n    for price in all_prices:\n        total_utility = location_utils[loc] + price_utils[price]\n        all_combos.append({\n            'Seat Location': loc,\n            'Price': price,\n            'Total Utility': total_utility\n        })\nall_df = pd.DataFrame(all_combos).sort_values(by='Total Utility', ascending=False)",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "all_df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "all_df = pd.DataFrame(all_combos).sort_values(by='Total Utility', ascending=False)\nactual_df = pd.DataFrame(actual_combos).sort_values(by='Total Utility', ascending=False)\n# Identify potential to raise/lower prices based on relative utility ranking\nrecommendations = []\nfor i, row in actual_df.iterrows():\n    combo_utility = row['Total Utility']\n    better_count = (all_df['Total Utility'] > combo_utility).sum()\n    worse_count = (all_df['Total Utility'] < combo_utility).sum()\n    midpoint = len(all_df) // 2\n    action = 'Keep Price'",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "actual_df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "actual_df = pd.DataFrame(actual_combos).sort_values(by='Total Utility', ascending=False)\n# Identify potential to raise/lower prices based on relative utility ranking\nrecommendations = []\nfor i, row in actual_df.iterrows():\n    combo_utility = row['Total Utility']\n    better_count = (all_df['Total Utility'] > combo_utility).sum()\n    worse_count = (all_df['Total Utility'] < combo_utility).sum()\n    midpoint = len(all_df) // 2\n    action = 'Keep Price'\n    if better_count <= midpoint / 2:",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "recommendations",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "recommendations = []\nfor i, row in actual_df.iterrows():\n    combo_utility = row['Total Utility']\n    better_count = (all_df['Total Utility'] > combo_utility).sum()\n    worse_count = (all_df['Total Utility'] < combo_utility).sum()\n    midpoint = len(all_df) // 2\n    action = 'Keep Price'\n    if better_count <= midpoint / 2:\n        action = 'Raise Price'\n    elif worse_count <= midpoint / 2:",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "recommendations_df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "recommendations_df = pd.DataFrame(recommendations)\nprint(\"\\n=== Price Adjustment Recommendations ===\\n\")\nprint(recommendations_df.to_string(index=False))\n####################################################################################################\n################### Should the Trail Blazers Change Promotions?\nimport pandas as pd\n# Load the data\ndf = pd.read_csv(\"Portland_Trail_Blazers.csv\")\n# Extract the promo utility scores\npromo_cols = [",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "df = pd.read_csv(\"Portland_Trail_Blazers.csv\")\n# Extract the promo utility scores\npromo_cols = [\n    'Priority Playoff Tickets', \n    'Hot Dog and Soda', \n    'Trail Blazers Apparel', \n    '$20 Gift Certificiate', \n    'No Promotion'\n]\npromo_utils = df[promo_cols].iloc[0]",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "promo_cols",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "promo_cols = [\n    'Priority Playoff Tickets', \n    'Hot Dog and Soda', \n    'Trail Blazers Apparel', \n    '$20 Gift Certificiate', \n    'No Promotion'\n]\npromo_utils = df[promo_cols].iloc[0]\n# Convert to DataFrame\npromo_df = pd.DataFrame(promo_utils).reset_index()",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "promo_utils",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "promo_utils = df[promo_cols].iloc[0]\n# Convert to DataFrame\npromo_df = pd.DataFrame(promo_utils).reset_index()\npromo_df.columns = ['Promotion Item', 'Utility']\npromo_df = promo_df.sort_values(by='Utility', ascending=False)\n# Calculate incremental utility compared to \"No Promotion\"\nno_promo_utility = promo_utils['No Promotion']\npromo_df['Incremental Utility'] = promo_df['Utility'] - no_promo_utility\n# Recommend items with positive incremental utility\npromo_df['Recommendation'] = promo_df['Incremental Utility'].apply(",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "promo_df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "promo_df = pd.DataFrame(promo_utils).reset_index()\npromo_df.columns = ['Promotion Item', 'Utility']\npromo_df = promo_df.sort_values(by='Utility', ascending=False)\n# Calculate incremental utility compared to \"No Promotion\"\nno_promo_utility = promo_utils['No Promotion']\npromo_df['Incremental Utility'] = promo_df['Utility'] - no_promo_utility\n# Recommend items with positive incremental utility\npromo_df['Recommendation'] = promo_df['Incremental Utility'].apply(\n    lambda x: 'Include (Free or Paid)' if x > 0 else 'Not Recommended'\n)",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "promo_df.columns",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "promo_df.columns = ['Promotion Item', 'Utility']\npromo_df = promo_df.sort_values(by='Utility', ascending=False)\n# Calculate incremental utility compared to \"No Promotion\"\nno_promo_utility = promo_utils['No Promotion']\npromo_df['Incremental Utility'] = promo_df['Utility'] - no_promo_utility\n# Recommend items with positive incremental utility\npromo_df['Recommendation'] = promo_df['Incremental Utility'].apply(\n    lambda x: 'Include (Free or Paid)' if x > 0 else 'Not Recommended'\n)\n# Display results",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "promo_df",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "promo_df = promo_df.sort_values(by='Utility', ascending=False)\n# Calculate incremental utility compared to \"No Promotion\"\nno_promo_utility = promo_utils['No Promotion']\npromo_df['Incremental Utility'] = promo_df['Utility'] - no_promo_utility\n# Recommend items with positive incremental utility\npromo_df['Recommendation'] = promo_df['Incremental Utility'].apply(\n    lambda x: 'Include (Free or Paid)' if x > 0 else 'Not Recommended'\n)\n# Display results\nprint(\"\\n=== Promotional Item Utility Analysis ===\\n\")",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "no_promo_utility",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "no_promo_utility = promo_utils['No Promotion']\npromo_df['Incremental Utility'] = promo_df['Utility'] - no_promo_utility\n# Recommend items with positive incremental utility\npromo_df['Recommendation'] = promo_df['Incremental Utility'].apply(\n    lambda x: 'Include (Free or Paid)' if x > 0 else 'Not Recommended'\n)\n# Display results\nprint(\"\\n=== Promotional Item Utility Analysis ===\\n\")\nprint(promo_df.to_string(index=False))\n####################################################################################################",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "promo_df['Recommendation']",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "promo_df['Recommendation'] = promo_df['Incremental Utility'].apply(\n    lambda x: 'Include (Free or Paid)' if x > 0 else 'Not Recommended'\n)\n# Display results\nprint(\"\\n=== Promotional Item Utility Analysis ===\\n\")\nprint(promo_df.to_string(index=False))\n####################################################################################################\n############# heat map\nimport seaborn as sns\nimport matplotlib.pyplot as plt",
+        "detail": "trailblazers",
+        "documentation": {}
+    },
+    {
+        "label": "heatmap_data",
+        "kind": 5,
+        "importPath": "trailblazers",
+        "description": "trailblazers",
+        "peekOfCode": "heatmap_data = promo_df.set_index('Promotion Item')[['Incremental Utility']]\n# Plot the heatmap\nplt.figure(figsize=(8, 5))\nsns.heatmap(heatmap_data, annot=True, cmap='YlGnBu', linewidths=0.5, fmt=\".3f\", cbar_kws={'label': 'Incremental Utility'})\nplt.title('Heatmap of Promotional Item Value (vs No Promotion)')\nplt.xlabel('Promotion Value')\nplt.ylabel('')\nplt.tight_layout()\nplt.show()",
+        "detail": "trailblazers",
+        "documentation": {}
+    }
+]
